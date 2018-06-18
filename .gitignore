@@ -1,2 +1,5 @@
 .cfg/
 .aws/credentials
+.viminfo
+.zcompdump*
+.zsh_history
