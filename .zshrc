@@ -11,7 +11,7 @@ export ZSH_CUSTOM=/home/bubba/.config/oh-my-zsh
 # Configure Powerlevel9k
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-POWERLEVEL9K_MODE='awesome-fontconfig'
+POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon load virtualenv dir vcs)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -62,3 +62,4 @@ prompt_context() {
 }
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+source /var/lib/ReproConnect/python3/bin/activate
