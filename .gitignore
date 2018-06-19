@@ -3,3 +3,5 @@
 .viminfo
 .zcompdump*
 .zsh_history
+.config/nvim/plugged
+.config/nvim/autoload
