@@ -6,3 +6,5 @@
 .config/nvim/plugged/
 .config/nvim/autoload/
 .local/share/nvim/shada/
+.ssh/known_hosts
+*.swp
