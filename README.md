@@ -14,12 +14,12 @@ Installation
 
 Define the `config` alias in the current shell scope.
 ```sh
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
 ```
 
 Clone the files into a [bare][4] repository in a "dot" folder of your **$HOME**
 ```sh
-git clone --bare --recurse-submodules -j8 https://github.com/bubba-h57/dotfiles.git $HOME/.cfg
+git clone --bare --recurse-submodules -j8 https://github.com/bubba-h57/dotfiles.git $HOME/.dotfiles
 ```
 
 Checkout the actual content frome the bare repository into your **$HOME**
@@ -54,9 +54,9 @@ Starting From Scratch
 So you want to manage your dotfiles like this as well?
 ```
 git init --bare $HOME/.cfg
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 config config --local status.showUntrackedFiles no
-echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> $HOME/.zshrc
+echo "alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
 After you've executed the setup any file within the $HOME folder can be versioned with normal commands, replacing `git` with your newly created `config` alias
 
