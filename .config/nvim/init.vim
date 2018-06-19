@@ -54,9 +54,6 @@ Plug 'iCyMind/NeoSolarized'
 
 call plug#end()
 
-autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-
-
 set backspace=indent,eol,start
 
 filetype plugin indent on 
