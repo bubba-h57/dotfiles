@@ -11,9 +11,10 @@ export PATH=.:$PATH
 
 
 if [[ `/usr/bin/uname` == 'Linux' ]]; then
-     export LINUX=1
+    export LINUX=1
     export BIN_DIRCOLORS=`which dircolors`
     export BIN_LS=/usr/bin/ls
+    export MY_VIRTUAL_ENV=/var/lib/ReproConnect/python3/bin/activate
 else
     export LINUX=0
 fi
@@ -22,6 +23,7 @@ if [[ `/usr/bin/uname` == 'Darwin' ]]; then
     export OSX=1
     export BIN_DIRCOLORS=`which gdircolors`
     export BIN_LS=/usr/local/bin/gls
+    export MY_VIRTUAL_ENV=$HOME/.virtualenvs/Bubba/bin/activate
 else
     export OSX=0
 fi
