@@ -4,6 +4,14 @@ stty ixoff -ixon
 stty stop undef
 stty start undef
 
+### Override UMASK to ensure everyone in our group can do what we do
+#umask 0022 = 755 for dirs & 644 for files.
+#umask 0000 = 777 for dirs & 666 for files.
+#umask 0027 = 750 for dirs & 640 for files.
+#umask 0077 = 700 for dirs & 600 for files 
+#umask 0007 = 770 for dirs & 660 for files     
+umask 0007
+
 # Path to your oh-my-zsh configuration.
 export ZSH=/home/bubba/.oh-my-zsh
 export ZSH_CUSTOM=/home/bubba/.config/oh-my-zsh

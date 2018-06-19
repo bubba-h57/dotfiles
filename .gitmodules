@@ -7,3 +7,6 @@
 [submodule ".config/oh-my-zsh/plugins/zsh-syntax-highlighting"]
 	path = .config/oh-my-zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule ".config/oh-my-zsh/dircolors-solarized"]
+	path = .config/oh-my-zsh/dircolors-solarized
+	url = git@github.com:seebi/dircolors-solarized.git
