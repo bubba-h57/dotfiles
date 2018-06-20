@@ -16,7 +16,7 @@ fi
 
 if [[ ! -d ${MY_VIRTUALENV} ]]; then
 	mkdir -p ${MY_VIRTUALENV}
-	$BIN_PYTHON3 $BIN_VIRTUALENV -q --python $BIN_PYTHON3 $MY_VIRTUALENV
+	$BIN_VIRTUALENV -q --python $BIN_PYTHON3 $MY_VIRTUALENV
 fi
 
 source $MY_VIRTUALENV/bin/activate

@@ -19,6 +19,7 @@ if has("unix")
   if s:uname =~? "Darwin"
     let g:python2_host_prog='/usr/local/bin/python2' 
     let g:python3_host_prog='/usr/local/bin/python3'
+	set cb=unnamed
   endif
 
 endif
@@ -73,6 +74,7 @@ set shiftwidth=4
 set smarttab
 set expandtab
 
+
 " Always display the status line
 set laststatus=2
 
@@ -92,7 +94,7 @@ colorscheme NeoSolarized
  
 let NERDTreeShowHidden=1
 
-"""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""
 " Mappings configurationn
 """""""""""""""""""""""""""""""""""""
 map <C-n> :NERDTreeToggle<CR>
