@@ -15,6 +15,7 @@
 .cfg/
 .dotfiles
 .config/python/venvs
+.config/python/last_pip_update
 .composer
 .config/NuGet/
 .config/QtProject/
