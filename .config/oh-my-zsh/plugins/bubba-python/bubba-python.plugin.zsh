@@ -4,7 +4,7 @@ LAST_PIP_CACHE_FILE=$HOME/.config/python/last_pip_update
 
 if [[ `uname` == 'Linux' ]]; then
     export MY_OS=`awk -F'=' '/^ID=/ {print $2}' /etc/os-release`
-    if [[ $MY_OS == 'amzn' ]]; then
+    if [[ $MY_OS == '"amzn"' ]]; then
         export BIN_PYTHON3=/usr/local/bin/python3.6
         export BIN_VIRTUALENV=/usr/bin/virtualenv
     elif [[ $MY_OS == 'ubuntu' ]]; then
