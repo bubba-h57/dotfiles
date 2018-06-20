@@ -14,7 +14,7 @@ Installation
 
 Define the `config` alias in the current shell scope.
 ```sh
-alias config='/usr/bin/git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
 Clone the files into a [bare][4] repository in a "dot" folder of your **$HOME**
@@ -29,7 +29,7 @@ config checkout
 
 Ensure all the submodules are updated.
 ```sh
-config submodules update --recursive
+config submodule update --recursive
 ```
 
 Set the flag showUntrackedFiles to no on this specific (local) repository:
