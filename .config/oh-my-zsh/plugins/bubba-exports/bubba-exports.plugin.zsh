@@ -10,7 +10,7 @@ export PATH=.:$PATH
 
 
 
-if [[ `/usr/bin/uname` == 'Linux' ]]; then
+if [[ `uname` == 'Linux' ]]; then
     export LINUX=1
     export BIN_DIRCOLORS=`which dircolors`
     export BIN_LS=/usr/bin/ls
@@ -19,7 +19,7 @@ else
     export LINUX=0
 fi
 
-if [[ `/usr/bin/uname` == 'Darwin' ]]; then
+if [[ `uname` == 'Darwin' ]]; then
     export OSX=1
     export BIN_DIRCOLORS=`which gdircolors`
     export BIN_LS=/usr/local/bin/gls
