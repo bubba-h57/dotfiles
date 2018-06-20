@@ -19,7 +19,7 @@ if [[ `uname` == 'Linux' ]]; then
     if [[ $MY_OS == 'amzn' ]]; then
         export BIN_LS=/usr/bin/ls
     elif [[ $MY_OS == 'ubuntu' ]]; then
-        export BIN_LS=/usr/ls
+        export BIN_LS=/bin/ls
     fi
 elif [[ `uname` == 'Darwin' ]]; then
     export OSX=1
