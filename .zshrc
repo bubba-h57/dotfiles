@@ -17,7 +17,8 @@ export ZSH_CUSTOM=$HOME/.config/oh-my-zsh
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon load virtualenv dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon virtualenv php_version vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator time)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
@@ -30,40 +31,5 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(osx aws bubba-exports bubba-aliases bubba-python command-not-found git git-flow-avh colorize phing pyenv python systemd wd zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
-
-prompt_context() {
-  local current_state="DEFAULT"
-  typeset -AH context_states
-  context_states=(
-    "ROOT"      "yellow"
-    "DEFAULT"   "011"
-    "WARN"      "227"
-    "ALERT"     "160"
-  )
-
-  local content=""
-
-  if [[ $HOSTNAME == prd-citadel* ]] || [[ $HOSTNAME == qa-* ]]; then
-    current_state="WARN"
-  elif [[ $HOSTNAME == prd-* ]]; then
-    current_state="ALERT"
-  fi
-
-  if [[ "$POWERLEVEL9K_ALWAYS_SHOW_CONTEXT" == true ]] || [[ "$USER" != "$DEFAULT_USER" ]] || [[ -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]; then
-
-      if [[ $(print -P "%#") == '#' ]]; then
-        current_state="ROOT"
-      fi
-
-      content="${POWERLEVEL9K_CONTEXT_TEMPLATE}"
-
-  elif [[ "$POWERLEVEL9K_ALWAYS_SHOW_USER" == true ]]; then
-      content="$USER"
-  else
-      return
-  fi
-
-  "$1_prompt_segment" "${0}_${current_state}" "$2" "$DEFAULT_COLOR" "${context_states[$current_state]}" "${content}"
-}
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
