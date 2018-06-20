@@ -13,6 +13,8 @@
 .blackfire.ini
 .cache
 .cfg/
+.dotfiles
+.config/python/venvs
 .composer
 .config/NuGet/
 .config/QtProject/

@@ -8,27 +8,24 @@ export PATH=/Users/bubba/.composer/vendor/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=.:$PATH
 
-
+export LINUX=0
+export OSX=0
 
 if [[ `uname` == 'Linux' ]]; then
     export LINUX=1
     export BIN_DIRCOLORS=`which dircolors`
-    export BIN_LS=/usr/bin/ls
-    export MY_VIRTUAL_ENV=/var/lib/ReproConnect/python3/bin/activate
-else
-    export LINUX=0
-fi
+    export MY_OS=`awk -F'=' '/^ID=/ {print $2}' /etc/os-release`
 
-if [[ `uname` == 'Darwin' ]]; then
+    if [[ $MY_OS == 'amzn' ]]; then
+        export BIN_LS=/usr/bin/ls
+    elif [[ $MY_OS == 'ubuntu' ]]; then
+        export BIN_LS=/usr/ls
+    fi
+elif [[ `uname` == 'Darwin' ]]; then
     export OSX=1
     export BIN_DIRCOLORS=`which gdircolors`
     export BIN_LS=/usr/local/bin/gls
-    export MY_VIRTUAL_ENV=$HOME/.virtualenvs/Bubba/bin/activate
-else
-    export OSX=0
 fi
-
-
 
 export HOSTNAME="`hostname -s`"
 export PAGER="less"
