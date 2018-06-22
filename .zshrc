@@ -3,6 +3,7 @@ stty ixany
 stty ixoff -ixon
 stty stop undef
 stty start undef
+setopt noflowcontrol
 
 #umask 0027 = 750 for dirs & 640 for files.
 #umask 0077 = 700 for dirs & 600 for files 
@@ -33,3 +34,5 @@ plugins=(osx aws bubba-exports bubba-aliases bubba-python command-not-found git 
 source $ZSH/oh-my-zsh.sh
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
