@@ -26,7 +26,7 @@ elif [[ `uname` == 'Darwin' ]]; then
     export BIN_DIRCOLORS=`which gdircolors`
     export BIN_LS=/usr/local/bin/gls
 fi
-echo $BIN_LS
+
 export HOSTNAME="`hostname -s`"
 export PAGER="less"
 export EDITOR="nvim"
