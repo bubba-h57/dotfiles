@@ -14,7 +14,7 @@ export OSX=0
 if [[ `uname` == 'Linux' ]]; then
     export LINUX=1
     export BIN_DIRCOLORS=`which dircolors`
-    export MY_OS=`awk -F'=' '/^ID=/ {print $2}' /etc/os-release`
+    export MY_OS=`awk -F'=' -v replace="'" '/^ID=/ {gsub(/"/,"",$2); gsub(replace,"",$2);print $2}' /etc/os-release`
 
     if [[ $MY_OS == 'amzn' ]]; then
         export BIN_LS=/usr/bin/ls
@@ -26,7 +26,7 @@ elif [[ `uname` == 'Darwin' ]]; then
     export BIN_DIRCOLORS=`which gdircolors`
     export BIN_LS=/usr/local/bin/gls
 fi
-
+echo $BIN_LS
 export HOSTNAME="`hostname -s`"
 export PAGER="less"
 export EDITOR="nvim"
