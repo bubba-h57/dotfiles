@@ -155,7 +155,12 @@ nmap <silent> <leader><f5> :e $MYVIMRC<CR>
 nmap <silent> <leader><f6> :so $MYVIMRC<CR>
 
 " delete trailing space when saving files
-autocmd vimrc BufWrite *.php,*.js,*.jsx,*.vue,*.twig,*.html,*.sh,*.yaml,*.yml :call general#DeleteTrailingWS()
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd vimrc BufWrite *.php,*.js,*.jsx,*.vue,*.twig,*.html,*.sh,*.yaml,*.yml :call DeleteTrailingWS()
 
 map <C-n> :NERDTreeToggle<CR>
 map <leader><n> :NERDTreeToggle<CR>
