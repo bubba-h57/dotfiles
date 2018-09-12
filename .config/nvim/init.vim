@@ -140,16 +140,6 @@ map <leader>' ysiw'<cr>
 vmap < <gv
 vmap > >gv
 
-" arrow keys resize windows
-nnoremap <Left> :vertical resize -10<CR>
-nnoremap <Right> :vertical resize +10<CR>
-nnoremap <Up> :resize -10<CR>
-nnoremap <Down> :resize +10<CR>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
-
 " edit vimrc with f5 and source it with f6
 nmap <silent> <leader><f5> :e $MYVIMRC<CR>
 nmap <silent> <leader><f6> :so $MYVIMRC<CR>
@@ -235,8 +225,8 @@ set hidden
 " doesn't display the mode status
 set noshowmode
 
-" Keep cursor more in middle when scrolling down / up
-set scrolloff=999
+" Don't move my lines around at all.
+set scrolloff=0
 
 " no swap file! This is just annoying
 set noswapfile
@@ -261,7 +251,7 @@ set wildmode=list:longest,full
 set mouse=a
 
 let NERDTreeShowHidden=1
-
+let NERDTreeQuitOnOpen=0
 
 "" Reloads the vim config after saving.
 augroup myvimrc
@@ -270,5 +260,5 @@ augroup myvimrc
 augroup END
 
 
-call neomake#configure#automake('nrwi', 500) 
+"" call neomake#configure#automake('nrwi', 500) 
 au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
