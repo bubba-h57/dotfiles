@@ -22,7 +22,7 @@ if has("unix")
   endif
 
   if filereadable($HOME .'/.config/python/venvs/Bubba/bin/python3')             " Prefer my personal virtual environment
-  	let g:python3_host_prog=$HOME .'/.config/python/venvs/Bubba/bin/python3')
+  	let g:python3_host_prog=$HOME .'/.config/python/venvs/Bubba/bin/python3'
   elseif filereadable('/var/lib/ReproConnect/python3/bin/python3')              " then the STS Virtual Env
   	let g:python3_host_prog='/var/lib/ReproConnect/python3/bin/python3'
   elseif filereadable('/usr/local/bin/python3')                                 " Finally, look in /usr/bin
