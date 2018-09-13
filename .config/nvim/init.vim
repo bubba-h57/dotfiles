@@ -12,18 +12,21 @@ augroup END
 "-------------------------------------
 if has("unix")
   let s:uname = system("uname")
-  
-  if filereadable('/var/lib/ReproConnect/python/bin/python')
+
+  if filereadable('/var/lib/ReproConnect/python/bin/python')            " Prefer the STS Virtual environment
   	let g:python2_host_prog='/var/lib/ReproConnect/python/bin/python'
+  elseif filereadable('/usr/local/bin/python2')                         " Or we will look for the /usr/local install
+  	let g:python3_host_prog='/usr/local/bin/python2'
+  elseif filereadable('/usr/bin/python2.7')                               " finally, check of it in /usr/bin 
+  	let g:python3_host_prog='/usr/bin/python2.7'
   endif
 
-  if filereadable('/var/lib/ReproConnect/python3/bin/python')
-  	let g:python3_host_prog='/var/lib/ReproConnect/python3/bin/python'
-  endif
-
-  if s:uname =~? "Darwin"
-    let g:python2_host_prog='/usr/local/bin/python2' 
-    let g:python3_host_prog='/usr/local/bin/python3'
+  if filereadable($HOME .'/.config/python/venvs/Bubba/bin/python3')             " Prefer my personal virtual environment
+  	let g:python3_host_prog=$HOME .'/.config/python/venvs/Bubba/bin/python3')
+  elseif filereadable('/var/lib/ReproConnect/python3/bin/python3')              " then the STS Virtual Env
+  	let g:python3_host_prog='/var/lib/ReproConnect/python3/bin/python3'
+  elseif filereadable('/usr/local/bin/python3')                                 " Finally, look in /usr/bin
+  	let g:python3_host_prog='/usr/local/bin/python3'
   endif
 
 endif
