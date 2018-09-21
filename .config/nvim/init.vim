@@ -185,11 +185,11 @@ set number
 set ruler
 
 " Set Proper Tabs
-set autoindent
-set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set expandtab
+set autoindent
 
 " Always display the status line
 set laststatus=2
