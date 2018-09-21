@@ -6,9 +6,11 @@ stty start undef
 setopt noflowcontrol
 
 #umask 0027 = 750 for dirs & 640 for files.
-#umask 0077 = 700 for dirs & 600 for files 
-#umask 0007 = 770 for dirs & 660 for files     
+#umask 0077 = 700 for dirs & 600 for files
+#umask 0007 = 770 for dirs & 660 for files
 umask 0027
+
+nvim --headless -es +PlugUpgrade +PlugInstall +PlugUpdate +qall!
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
