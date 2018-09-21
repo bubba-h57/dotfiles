@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""
-" Bubba Hines neovim configuration 
+" Bubba Hines neovim configuration
 """""""""""""""""""""""""""""""""""""""
 
 " Declare the general config group for autocommand
@@ -17,7 +17,7 @@ if has("unix")
   	let g:python2_host_prog='/var/lib/ReproConnect/python/bin/python'
   elseif filereadable('/usr/local/bin/python2')                         " Or we will look for the /usr/local install
   	let g:python3_host_prog='/usr/local/bin/python2'
-  elseif filereadable('/usr/bin/python2.7')                               " finally, check of it in /usr/bin 
+  elseif filereadable('/usr/bin/python2.7')                               " finally, check of it in /usr/bin
   	let g:python3_host_prog='/usr/bin/python2.7'
   endif
 
@@ -164,7 +164,7 @@ map <leader><n> :NERDTreeToggle<CR>
 set t_Co=256
 set background=dark
 
-if (has("termguicolors"))     
+if (has("termguicolors"))
 	set termguicolors
 endif
 
@@ -172,11 +172,11 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 
 let g:lightline = {
     \ 'colorscheme': 'solarized',
-    \ }
-colorscheme NeoSolarized 
+    \  }
+colorscheme NeoSolarized
 
 """""""""""""""""""""""""""""""""""""
-" General Config 
+" General Config
 """"""""""""""""""""""""""""""""""""""
 set encoding=utf8
 
@@ -222,7 +222,7 @@ set smartcase
 " set list
 set list listchars=tab:\┆\ ,trail:·,nbsp:±
 
-" doesn't prompt a warning when opening a file and the current file was written but not saved 
+" doesn't prompt a warning when opening a file and the current file was written but not saved
 set hidden
 
 " doesn't display the mode status
@@ -230,6 +230,7 @@ set noshowmode
 
 " Don't move my lines around at all.
 set scrolloff=0
+
 
 " no swap file! This is just annoying
 set noswapfile
@@ -255,13 +256,24 @@ set mouse=a
 
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=0
+let g:NERDTreeMouseMode=2
+
+noremap  <silent> <C-S> :update<CR>
+vnoremap <silent> <C-S> <C-C>:update<CR>
+inoremap <silent> <C-S> <C-O>:update<CR>
+noremap  <silent> <D-S> :update<CR>
+vnoremap <silent> <D-S> <C-C>:update<CR>
+inoremap <silent> <D-S> <C-O>:update<CR>
 
 "" Reloads the vim config after saving.
 augroup myvimrc
         autocmd!
-        " autocmd BufWritePost $MYVIMRC so $MYVIMRC
+        autocmd BufWritePost $MYVIMRC so $MYVIMRC
 augroup END
 
+let g:lightline.colorscheme = 'solarized'
 
-"" call neomake#configure#automake('nrwi', 500) 
+call neomake#configure#automake('nrwi', 500)
+autocmd BufWritePre * :%s/\s\+$//e
 au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
+
