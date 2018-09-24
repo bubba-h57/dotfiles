@@ -10,6 +10,13 @@ setopt noflowcontrol
 #umask 0007 = 770 for dirs & 660 for files
 umask 0027
 
+# Pull any updates to my dotfile.
+/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull --quiet
+
+# Then update any submodules.
+/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME submodule update --quiet --recursive
+
+# Finally, install all my nvim plugins, or update them.
 nvim --headless -es +PlugUpgrade +PlugInstall +PlugUpdate +qall!
 
 # Path to your oh-my-zsh configuration.
