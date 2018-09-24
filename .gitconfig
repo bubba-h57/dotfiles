@@ -21,7 +21,7 @@
   old = red bold
   new = green bold
 [core]
-  editor = /usr/bin/vim
+	editor = /usr/local/bin/nvim
   autocrlf = input
 [help]
   autocorrect = 20
