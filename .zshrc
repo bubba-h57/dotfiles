@@ -10,14 +10,35 @@ setopt noflowcontrol
 #umask 0007 = 770 for dirs & 660 for files
 umask 0027
 
-# Pull any updates to my dotfile.
-/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull --quiet
+LAST_CONFIG_CACHE_FILE=$HOME/.last_git_update
+THIS_MONTH=$(echo `date` | awk '{print $2,$6}')
 
-# Then update any submodules.
-/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME submodule update --quiet --recursive
+if [[ -e $LAST_CONFIG_CACHE_FILE ]]; then
+    LAST_MONTH=$(<$LAST_CONFIG_CACHE_FILE)
+    if [[ $THIS_MONTH != $LAST_MONTH ]]; then
 
-# Finally, install all my nvim plugins, or update them.
-nvim --headless -es +PlugUpgrade +PlugInstall +PlugUpdate +qall!
+        # Pull any updates to my dotfile.
+        /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull --quiet
+
+        # Then update any submodules.
+        /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME submodule update --quiet --recursive
+
+        # Finally, install all my nvim plugins, or update them.
+        nvim --headless -es +PlugUpgrade +PlugInstall +PlugUpdate +qall!
+        echo $THIS_MONTH > $LAST_CONFIG_CACHE_FILE
+    fi
+else
+        # Pull any updates to my dotfile.
+        /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull --quiet
+
+        # Then update any submodules.
+        /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME submodule update --quiet --recursive
+
+        # Finally, install all my nvim plugins, or update them.
+        nvim --headless -es +PlugUpgrade +PlugInstall +PlugUpdate +qall!
+        echo $THIS_MONTH > $LAST_CONFIG_CACHE_FILE
+fi
+
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
