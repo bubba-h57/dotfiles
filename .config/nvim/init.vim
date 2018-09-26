@@ -13,22 +13,26 @@ augroup END
 if has("unix")
   let s:uname = system("uname")
 
-  if filereadable('/var/lib/ReproConnect/python/bin/python')            " Prefer the STS Virtual environment
-  	let g:python2_host_prog='/var/lib/ReproConnect/python/bin/python'
+
+  if filereadable($HOME .'/.config/python/venvs/Bubba2.7/bin/python2.7')             " Prefer my personal virtual environment
+    let g:python2_host_prog=$HOME .'/.config/python/venvs/Bubba2.7/bin/python2.7'
+  elseif filereadable('/var/lib/ReproConnect/python/bin/python')            " Prefer the STS Virtual environment
+    let g:python2_host_prog='/var/lib/ReproConnect/python/bin/python'
   elseif filereadable('/usr/local/bin/python2')                         " Or we will look for the /usr/local install
-  	let g:python3_host_prog='/usr/local/bin/python2'
+    let g:python2_host_prog='/usr/local/bin/python2'
   elseif filereadable('/usr/bin/python2.7')                               " finally, check of it in /usr/bin
-  	let g:python3_host_prog='/usr/bin/python2.7'
+    let g:python2_host_prog='/usr/bin/python2.7'
   endif
 
   if filereadable($HOME .'/.config/python/venvs/Bubba/bin/python3')             " Prefer my personal virtual environment
-  	let g:python3_host_prog=$HOME .'/.config/python/venvs/Bubba/bin/python3'
+    let g:python3_host_prog=$HOME .'/.config/python/venvs/Bubba/bin/python3'
   elseif filereadable('/var/lib/ReproConnect/python3/bin/python3')              " then the STS Virtual Env
-  	let g:python3_host_prog='/var/lib/ReproConnect/python3/bin/python3'
+    let g:python3_host_prog='/var/lib/ReproConnect/python3/bin/python3'
   elseif filereadable('/usr/local/bin/python3')                                 " Finally, look in /usr/bin
-  	let g:python3_host_prog='/usr/local/bin/python3'
+    let g:python3_host_prog='/usr/local/bin/python3'
   endif
 
+  let g:python_host_prog=g:python2_host_prog
 endif
 
 
@@ -276,4 +280,4 @@ let g:lightline.colorscheme = 'solarized'
 call neomake#configure#automake('nrwi', 500)
 autocmd BufWritePre * :%s/\s\+$//e
 au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
-
+set mouse=a

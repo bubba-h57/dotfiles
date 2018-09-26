@@ -1,0 +1,6 @@
+futures==3.2.0
+greenlet==0.4.15
+msgpack==0.5.6
+neovim==0.2.6
+six==1.11.0
+trollius==2.2
