@@ -210,7 +210,7 @@ set undofile
 set undodir=~/.config/nvim/undo//
 
 " the copy goes to the clipboard
-set clipboard+=unnamedplus
+set clipboard^=unnamed
 
 " when at 3 spaces, and I hit > ... go to 4, not 7
 set shiftround
