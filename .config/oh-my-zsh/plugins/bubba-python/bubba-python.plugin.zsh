@@ -19,11 +19,6 @@ if [[ ! -d ${MY_VIRTUALENV} ]]; then
 	$BIN_VIRTUALENV -q --python $BIN_PYTHON3 $MY_VIRTUALENV
 fi
 
-source $MY_VIRTUALENV/bin/activate
-
-
-$MY_VIRTUALENV/bin/pip install -q -r $HOME/.config/python/requirements.txt
-
 if [[ -e $LAST_PIP_CACHE_FILE ]]; then
 	THIS_MONTH=$(echo `date` | awk '{print $2,$6}')
 	LAST_MONTH=$(<$LAST_PIP_CACHE_FILE)
@@ -35,5 +30,6 @@ else
 	$MY_VIRTUALENV/bin/pip install -q -r $HOME/.config/python/requirements.txt
 	echo $THIS_MONTH > $LAST_PIP_CACHE_FILE
 fi
-	
 
+
+source $MY_VIRTUALENV/bin/activate
