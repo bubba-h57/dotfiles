@@ -58,29 +58,38 @@ endif
 call plug#begin(plug_dir_check)
 
 " Utility
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree'          " tree explorer plugin for vim.
+Plug 'Xuyuanp/nerdtree-git-plugin'  " plugin of NERDTree showing git status flags.
 
 " Ansible
-Plug 'pearofducks/ansible-vim'
+Plug 'pearofducks/ansible-vim'      " vim syntax plugin for Ansible 2.x, it supports YAML playbooks, Jinja2 templates, and Ansible's hosts files
 
 " Theme / Interface
-Plug 'ryanoasis/vim-devicons'
-Plug 'iCyMind/NeoSolarized'
-Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'       " Adds file type glyphs/icons to NERDTree
+Plug 'iCyMind/NeoSolarized'         " Sets up our NeoSolarized theme
+Plug 'itchyny/lightline.vim'        " A light and configurable statusline/tabline plugin for Vim
 
-" PHP
-Plug 'roxma/ncm-phpactor',  {'for': 'php'}
-Plug 'roxma/nvim-completion-manager'
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+" Completion Manager
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'        " Provides words from current buffer for completion.
+Plug 'ncm2/ncm2-path'           " Provides words from the files path
+Plug 'ncm2/ncm2-github'         " Provides Github repo completion
+Plug 'filipekiss/ncm2-look.vim' " Provides spelling based on BSD look dictionary
+Plug 'ncm2/ncm2-cssomni'        " Provices CSS Completion
+Plug 'ncm2/ncm2-tern'           " Provides Javascript Completion
+Plug 'ncm2/ncm2-jedi'           " Provides Python Completion
+Plug 'ncm2/ncm2-pyclang'        " Provides c/c++ completion
+Plug 'ncm2/ncm2-vim'            " Provides vimscript completion
+Plug 'ncm2/ncm2-go'             " Provides golang completion
+Plug 'phpactor/ncm2-phpactor'   " Provides PHP Completion
 
-Plug 'StanAngeloff/php.vim', {'for': 'php'}
+Plug 'StanAngeloff/php.vim', {'for': 'php'} " An up-to-date Vim syntax for PHP
 Plug 'stephpy/vim-php-cs-fixer', {'for': 'php'}
 Plug 'nishigori/vim-php-dictionary', {'for': 'php'}
 
 " php refactoring options
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
-Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
 Plug '2072/php-indenting-for-vim', {'for': 'php'}
 
 " php doc autocompletion
@@ -161,23 +170,6 @@ autocmd vimrc BufWrite *.php,*.js,*.jsx,*.vue,*.twig,*.html,*.sh,*.yaml,*.yml :c
 
 map <C-n> :NERDTreeToggle<CR>
 map <leader><n> :NERDTreeToggle<CR>
-
-"""""""""""""""""""""""""""""""""""""
-" Theme Settings
-""""""""""""""""""""""""""""""""""""""
-set t_Co=256
-set background=dark
-
-if (has("termguicolors"))
-	set termguicolors
-endif
-
-let base16colorspace=256  " Access colors present in 256 colorspace
-
-let g:lightline = {
-    \ 'colorscheme': 'solarized',
-    \  }
-colorscheme NeoSolarized
 
 """""""""""""""""""""""""""""""""""""
 " General Config
