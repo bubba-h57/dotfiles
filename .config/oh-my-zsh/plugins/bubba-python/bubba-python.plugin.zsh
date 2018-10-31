@@ -1,6 +1,6 @@
-export MY_VIRTUALENV=$HOME/.config/python/venvs/Bubba
+export MY_VIRTUALENV=$HOME/.config/python/venvs/py3Bubba
 export BIN_VIRTUALENV=/usr/local/bin/virtualenv
-LAST_PIP_CACHE_FILE=$HOME/.config/python/last_pip_update
+LAST_PIP_CACHE_FILE=$MY_VIRTUALENV/last_pip_update
 
 if [[ `uname` == 'Linux' ]]; then
     export MY_OS=`awk -F'=' '/^ID=/ {print $2}' /etc/os-release`
@@ -17,9 +17,8 @@ fi
 if [[ ! -d ${MY_VIRTUALENV} ]]; then
 	mkdir -p ${MY_VIRTUALENV}
 	$BIN_VIRTUALENV -q --python $BIN_PYTHON3 $MY_VIRTUALENV
-fi
-
-if [[ -e $LAST_PIP_CACHE_FILE ]]; then
+    $MY_VIRTUALENV/bin/pip install -q -r $HOME/.config/python/requirements.txt
+elif [[ -e $LAST_PIP_CACHE_FILE ]]; then
 	THIS_MONTH=$(echo `date` | awk '{print $2,$6}')
 	LAST_MONTH=$(<$LAST_PIP_CACHE_FILE)
 	if [[ $THIS_MONTH != $LAST_MONTH ]]; then
@@ -30,6 +29,5 @@ else
 	$MY_VIRTUALENV/bin/pip install -q -r $HOME/.config/python/requirements.txt
 	echo $THIS_MONTH > $LAST_PIP_CACHE_FILE
 fi
-
 
 source $MY_VIRTUALENV/bin/activate
