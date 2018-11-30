@@ -21,6 +21,7 @@ if [[ `uname` == 'Linux' ]]; then
         VERSION_ID=`awk -F'=' -v replace="'" '/^VERSION_ID=/ {gsub(/"/,"",$2); gsub(replace,"",$2);print $2}' /etc/os-release`
         if [[ $VERSION_ID == '2017.03' ]]; then
             export BIN_LS=/bin/ls
+        fi
     elif [[ $MY_OS == 'ubuntu' ]]; then
         export BIN_LS=/bin/ls
     fi
