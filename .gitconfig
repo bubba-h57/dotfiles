@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
-  name = Bubba
-  email = rob@stechstudio.com
+	name = Bubba
+	email = rob@stechstudio.com
 [push]
   default = upstream
 [color]
@@ -25,3 +25,8 @@
   autocrlf = input
 [help]
   autocorrect = 20
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
