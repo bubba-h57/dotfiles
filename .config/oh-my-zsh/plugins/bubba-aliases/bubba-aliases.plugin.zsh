@@ -12,15 +12,15 @@ alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
 alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
 alias ll='ls -l'      #long list
 
-alias zshrc='$EDITOR ~/.zshrc' # Quick access to the ~/.zshrc file
-alias resetZsh='source ~/.zshrc'
+alias zshrc="$EDITOR $HOME/.zshrc" # Quick access to the ~/.zshrc file
+alias resetZsh="source $HOME/.zshrc"
 
 alias clr='clear'
 alias cls='clear'
 
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
-alias hgrep='alias hgrep="fc -El 0 | grep'
+alias hgrep='fc -El 0 | grep'
 
 alias t='tail -f'
 

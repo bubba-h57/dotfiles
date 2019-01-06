@@ -64,6 +64,8 @@ plugins=(osx aws bubba-exports bubba-aliases bubba-python bubba-iterm-integratio
 
 source $ZSH/oh-my-zsh.sh
 
+eval "$(rbenv init -)"
+
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
