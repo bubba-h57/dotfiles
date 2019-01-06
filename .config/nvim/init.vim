@@ -123,6 +123,9 @@ Plug 'majutsushi/tagbar'
 " Debugger plugin
 Plug 'joonty/vdebug'
 
+" Syntax Files
+Plug 'ekalinin/dockerfile.vim'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""
@@ -153,8 +156,8 @@ map <SPACE> <leader>
 map <silent><esc> :noh<cr>
 
 " surround by quotes - frequently use cases of vim-surround
-map <leader>" ysiw"<cr>
-map <leader>' ysiw'<cr>
+map <leader>g" ciw""<Esc>P
+map <leader>' ysiw''<cr>
 
 " indent without kill the selection in vmode
 vmap < <gv
@@ -258,12 +261,31 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=0
 let g:NERDTreeMouseMode=2
 
-noremap  <silent> <C-S> :update<CR>
-vnoremap <silent> <C-S> <C-C>:update<CR>
-inoremap <silent> <C-S> <C-O>:update<CR>
-noremap  <silent> <D-S> :update<CR>
-vnoremap <silent> <D-S> <C-C>:update<CR>
-inoremap <silent> <D-S> <C-O>:update<CR>
+" CTL+S to save (:update)
+noremap  <silent> <C-s> :update<CR>
+vnoremap <silent> <C-s> <C-C>:update<CR>
+inoremap <silent> <C-s> <C-O>:update<CR>
+noremap  <silent> <D-s> :update<CR>
+vnoremap <silent> <D-s> <C-C>:update<CR>
+inoremap <silent> <D-s> <C-O>:update<CR>
+
+" CTL+A to select all
+noremap <silent> <C-a> gg"*VG<CR>
+vnoremap <silent> <C-a> <C-C>gg"*VG<CR>
+inoremap <silent> <C-a> <C-O>gg"*VG<CR>
+
+" CTL+C to copy text to clipboard
+vnoremap <silent> <C-c> "+y<CR>
+
+" CTL-X to cut text to clipboard
+vnoremap <silent> <C-x> "+d<CR>
+
+" CTL+V to paste text from clipboard
+noremap <silent> <C-v> "+p<CR>
+inoremap <silent> <C-v> <C-R>+
+
+" CTL-Q to quit the document
+map <silent> <C-q> :q<CR>
 
 "" Reloads the vim config after saving.
 augroup myvimrc
