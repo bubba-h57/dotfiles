@@ -85,8 +85,15 @@ Plug 'ncm2/ncm2-tern'           " Provides Javascript Completion
 Plug 'ncm2/ncm2-jedi'           " Provides Python Completion
 Plug 'ncm2/ncm2-pyclang'        " Provides c/c++ completion
 Plug 'ncm2/ncm2-vim'            " Provides vimscript completion
+Plug 'Shougo/neco-vim'          " Plug 'Shougo/neco-vim' depends on this.
 Plug 'ncm2/ncm2-go'             " Provides golang completion
 Plug 'phpactor/ncm2-phpactor'   " Provides PHP Completion
+
+" For Java Development
+Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
+Plug 'artur-shaik/vim-javacomplete2', {'for': ['java', 'jsp']}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'} " An up-to-date Vim syntax for PHP
 Plug 'stephpy/vim-php-cs-fixer', {'for': 'php'}
@@ -299,3 +306,7 @@ call neomake#configure#automake('nrwi', 500)
 autocmd BufWritePre * :%s/\s\+$//e
 au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
 set mouse=a
+
+" Enabling project specific config files '.nvimrc'
+set exrc   " allow loading local executing local rc files
+set secure " do not allow the use of :autocmd, shell and write commands in local .vimrc files.
