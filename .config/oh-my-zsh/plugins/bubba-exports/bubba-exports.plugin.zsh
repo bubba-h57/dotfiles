@@ -5,7 +5,7 @@ export PATH=/usr/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/opt/ruby/bin:$PATH
-# If we are funning 
+# If we are funning
 if [[ -a /usr/local/Cellar/bash/5.0.2/bin/bash ]]; then
     export PATH=/usr/local/Cellar/bash/5.0.2/bin:$PATH
 fi
