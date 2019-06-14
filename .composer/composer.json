@@ -1,0 +1,11 @@
+{
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "weprovide/valet-plus": "^1.0",
+        "laravel/installer": "^2.0",
+        "squizlabs/php_codesniffer": "*",
+        "doctrine/coding-standard": "^5.0",
+        "stechstudio/valet-plus-phpbrew": "dev-master"
+    }
+}
