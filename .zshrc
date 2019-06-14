@@ -60,7 +60,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(osx aws bubba-exports bubba-aliases bubba-python bubba-iterm-integration command-not-found git git-flow-avh colorize phing pyenv python systemd wd zsh-syntax-highlighting)
+plugins=(osx aws bubba-exports bubba-aliases bubba-iterm-integration bubba-python command-not-found git git-flow-avh colorize phing python systemd wd zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,4 +77,13 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 
+source /Users/bubba/.phpbrew/bashrc
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+eval "$(pyenv init -)"
+
+export DISPLAY=:0
+alias ssh="ssh -Y"
 clear
