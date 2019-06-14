@@ -1,4 +1,4 @@
-ansible==2.7.5
+ansible==2.7.8
 arrow==0.12.1
 asn1crypto==0.24.0
 autopep8==1.4.3
