@@ -69,7 +69,7 @@ python-dateutil==2.7.5
 python-json-logger==0.1.10
 pytoml==0.1.20
 pytz==2018.7
-PyYAML==3.13
+PyYAML==5.1
 regex==2018.11.22
 requests==2.21.0
 rsa==4.0
