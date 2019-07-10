@@ -64,3 +64,8 @@ fontname="Sauce Code Pro Semibold Nerd Font Complete.ttf"
 if [ ! -f ~/Library/Fonts/$fontname ]; then
     curl -fLo $fontname https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Semibold/complete/Sauce%20Code%20Pro%20Semibold%20Nerd%20Font%20Complete.ttf
 fi
+
+name="~/Library/Application Support/iTerm2/DynamicProfiles/iterm2.default.profile.json"
+if [ ! -f $name ]; then
+    curl -fLo '$name' https://github.com/bubba-h57/dotfiles/raw/master/.config/oh-my-zsh/plugins/bubba-nerdfont/iterm2.default.profile.json
+fi
