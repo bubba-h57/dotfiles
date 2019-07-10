@@ -2,9 +2,8 @@ export PATH=/bin
 export PATH=/sbin:$PATH
 export PATH=/usr/bin:$PATH
 export PATH=/usr/sbin:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH=/usr/local/sbin:$PATH
-export PATH=/usr/local/opt/ruby/bin:$PATH
+export PATH=/Users/bubba/homebrew/bin:$PATH
+
 # If we are funning
 if [[ -a /usr/local/Cellar/bash/5.0.2/bin/bash ]]; then
     export PATH=/usr/local/Cellar/bash/5.0.2/bin:$PATH
