@@ -10,6 +10,9 @@ setopt noflowcontrol
 #umask 0007 = 770 for dirs & 660 for files
 umask 0027
 
+mkdir -p $HOME/bin
+export PATH=$HOME/bin:$PATH
+
 LAST_CONFIG_CACHE_FILE=$HOME/.last_git_update
 THIS_MONTH=$(echo `date` | awk '{print $2,$6}')
 
@@ -64,18 +67,9 @@ plugins=(osx aws bubba-brew bubba-exports bubba-aliases bubba-iterm-integration 
 
 source $ZSH/oh-my-zsh.sh
 
-eval "$(rbenv init -)"
-
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 
 source /Users/bubba/.phpbrew/bashrc
 

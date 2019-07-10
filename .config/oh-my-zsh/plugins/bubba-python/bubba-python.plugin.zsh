@@ -6,7 +6,6 @@ FOUND_PYENV=$+commands[pyenv]
 
 if [[ $FOUND_PYENV -eq 1 ]]; then
     eval "$(pyenv init - zsh)"
-    source $(pyenv root)/completions/pyenv.zsh
     if (( $+commands[pyenv-virtualenv-init] )); then
         eval "$(pyenv virtualenv-init - zsh)"
     fi
