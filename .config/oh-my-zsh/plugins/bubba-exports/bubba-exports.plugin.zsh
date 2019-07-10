@@ -14,28 +14,10 @@ export PATH=$HOME/.composer/vendor/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=.:$PATH
 
-export LINUX=0
-export OSX=0
+export OSX=1
+export BIN_DIRCOLORS=`which gdircolors`
+export BIN_LS=/usr/local/bin/gls
 
-if [[ `uname` == 'Linux' ]]; then
-    export LINUX=1
-    export BIN_DIRCOLORS=`which dircolors`
-    export MY_OS=`awk -F'=' -v replace="'" '/^ID=/ {gsub(/"/,"",$2); gsub(replace,"",$2);print $2}' /etc/os-release`
-
-    if [[ $MY_OS == 'amzn' ]]; then
-        export BIN_LS=/usr/bin/ls
-        VERSION_ID=`awk -F'=' -v replace="'" '/^VERSION_ID=/ {gsub(/"/,"",$2); gsub(replace,"",$2);print $2}' /etc/os-release`
-        if [[ $VERSION_ID == '2017.03' ]]; then
-            export BIN_LS=/bin/ls
-        fi
-    elif [[ $MY_OS == 'ubuntu' ]]; then
-        export BIN_LS=/bin/ls
-    fi
-elif [[ `uname` == 'Darwin' ]]; then
-    export OSX=1
-    export BIN_DIRCOLORS=`which gdircolors`
-    export BIN_LS=/usr/local/bin/gls
-fi
 
 export HOSTNAME="`hostname -s`"
 export PAGER="less"
