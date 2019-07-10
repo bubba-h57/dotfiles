@@ -15,7 +15,7 @@ export PATH=.:$PATH
 
 export OSX=1
 export BIN_DIRCOLORS=`which gdircolors`
-export BIN_LS=/usr/local/bin/gls
+export BIN_LS=$(which gls)
 
 
 export HOSTNAME="`hostname -s`"

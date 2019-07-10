@@ -27,3 +27,8 @@ fi
 
 export PATH=/Users/bubba/homebrew/bin:$PATH
 brew install coreutils
+
+
+
+curl -L -O=$HOME/bin/phpbrew https://github.com/phpbrew/phpbrew/raw/master/phpbrew
+chmod +x $HOME/bin/phpbrew
