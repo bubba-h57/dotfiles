@@ -31,9 +31,17 @@ if [ ! -f  $brew_prefix/bin/gdircolors ]; then
     brew install coreutils
 fi
 
+if [ ! -f  $brew_prefix/bin/nvim ]; then
+brew install nvim
+fi
+
+
 if [ ! -f  $brew_prefix/bin/pyenv ]; then
     brew install pyenv
     pyenv init
+    pyenv install 3.7.4
+    pyenv shell 3.7.4
+    pip install neovim
 fi
 
 
@@ -41,9 +49,6 @@ if [ ! -f  $HOME/bin/phpbrew ]; then
     curl -L -o $HOME/bin/phpbrew https://github.com/phpbrew/phpbrew/raw/master/phpbrew
     chmod +x $HOME/bin/phpbrew
     phpbrew init
-    pyenv install 3.7.4
-    pyenv shell 3.7.4
-    pip install neovim
 fi
 
 
