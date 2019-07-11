@@ -1,9 +1,9 @@
 
 
-if groups $user | grep -q -w admin; 
-then 
-    brew_prefix=/usr/local/include 
-else 
+if groups $user | grep -q -w admin;
+then
+    brew_prefix=/usr/local/include
+else
     brew_prefix=$HOME/homebrew
 fi
 
@@ -12,7 +12,7 @@ brew_bin=$brew_prefix/bin/brew
 
 
 if [ ! -f  $brew_bin ]; then
-    mkdir $brew_prefix 
+    mkdir $brew_prefix
     curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $brew_prefix
     mkdir -p \
         $brew_prefix/etc \
@@ -41,6 +41,9 @@ if [ ! -f  $HOME/bin/phpbrew ]; then
     curl -L -o $HOME/bin/phpbrew https://github.com/phpbrew/phpbrew/raw/master/phpbrew
     chmod +x $HOME/bin/phpbrew
     phpbrew init
+    pyenv install 3.7.4
+    pyenv shell 3.7.4
+    pip install neovim
 fi
 
 
