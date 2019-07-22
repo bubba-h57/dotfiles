@@ -1,17 +1,7 @@
-export PATH=/bin
-export PATH=/sbin:$PATH
-export PATH=/usr/bin:$PATH
-export PATH=/usr/sbin:$PATH
-export PATH=/Users/bubba/homebrew/bin:$PATH
-
 # If we are funning
 if [[ -a /usr/local/Cellar/bash/5.0.2/bin/bash ]]; then
     export PATH=/usr/local/Cellar/bash/5.0.2/bin:$PATH
 fi
-
-export PATH=$HOME/.composer/vendor/bin:$PATH
-export PATH=$HOME/bin:$PATH
-export PATH=.:$PATH
 
 export OSX=1
 export BIN_DIRCOLORS=`which gdircolors`

@@ -6,6 +6,7 @@
         "laravel/installer": "^2.0",
         "squizlabs/php_codesniffer": "*",
         "doctrine/coding-standard": "^5.0",
-        "stechstudio/valet-plus-phpbrew": "dev-master"
+        "stechstudio/valet-plus-phpbrew": "dev-master",
+        "laravel/valet": "^2.3"
     }
 }

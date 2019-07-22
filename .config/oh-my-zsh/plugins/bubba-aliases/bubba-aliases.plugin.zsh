@@ -44,6 +44,29 @@ alias cdu='composer dump-autoload'
 
 alias ap='ansible-playbook --private-key ansible.pem --vault-password-file .ansible-vault'
 
+colorize_via_pygmentize () {
+	if ! (( $+commands[pygmentize] ))
+	then
+        pip install Pygments pygments-solarized
+	fi
+	if [ $# -eq 0 ]
+	then
+		pygmentize -O style=solarized_dark256 -g
+		return $?
+	fi
+	local FNAME lexer
+	for FNAME in "$@"
+	do
+		lexer=$(pygmentize -N "$FNAME")
+		if [[ $lexer != text ]]
+		then
+			pygmentize -O style=solarized_dark256 -l "$lexer" "$FNAME"
+		else
+			pygmentize -O style=solarized_dark256 -g "$FNAME"
+		fi
+	done
+}
+
 alias cat='colorize_via_pygmentize'
 
 alias bubba="Hello Studly"

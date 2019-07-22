@@ -11,7 +11,7 @@ setopt noflowcontrol
 umask 0027
 
 mkdir -p $HOME/bin
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/.composer/vendor/bin:$PATH
 
 LAST_CONFIG_CACHE_FILE=$HOME/.last_git_update
 THIS_MONTH=$(echo `date` | awk '{print $2,$6}')
@@ -63,7 +63,7 @@ ZSH_DISABLE_COMPFIX="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(osx aws bubba-nerdfont bubba-brew bubba-exports bubba-aliases bubba-iterm-integration bubba-python command-not-found git git-flow-avh colorize phing python systemd wd zsh-syntax-highlighting)
+plugins=(osx aws bubba-nerdfont bubba-brew bubba-exports bubba-aliases bubba-iterm-integration bubba-python command-not-found git git-flow-avh phing python systemd wd zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 

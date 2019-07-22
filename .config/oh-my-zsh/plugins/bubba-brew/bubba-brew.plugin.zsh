@@ -2,7 +2,7 @@
 
 if groups $user | grep -q -w admin;
 then
-    brew_prefix=/usr/local/include
+    brew_prefix=/usr/local
 else
     brew_prefix=$HOME/homebrew
 fi

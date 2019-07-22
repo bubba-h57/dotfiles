@@ -32,3 +32,5 @@
 	required = true
 [gui]
 	recentrepo = /Users/bubba/develop/stechstudio/Viewer-Conversion
+[credential]
+	helper = osxkeychain
