@@ -34,3 +34,5 @@ php:
 		+mysql \
 		+pgsql="/usr/local/opt/postgresql" \
 		+pdo
+	phpbrew switch $(PHP_VER)
+	phpbrew ext install vips -- --with-readline=/usr/local/opt/readline
