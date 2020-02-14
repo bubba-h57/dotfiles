@@ -11,7 +11,7 @@ setopt noflowcontrol
 umask 0027
 
 mkdir -p $HOME/bin
-export PATH=$HOME/bin:$HOME/.composer/vendor/bin:$PATH
+export PATH=/usr/local/src/flutter/bin;$HOME/bin:$HOME/.composer/vendor/bin:$PATH
 
 LAST_CONFIG_CACHE_FILE=$HOME/.last_git_update
 THIS_MONTH=$(echo `date` | awk '{print $2,$6}')
@@ -78,4 +78,7 @@ eval "$(pyenv init -)"
 
 export DISPLAY=:0
 alias ssh="ssh -Y"
+
+source $HOME/.phpbrew/bashrc
+/usr/bin/ssh-add
 clear

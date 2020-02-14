@@ -1,7 +1,14 @@
-PHP_VER?=7.2
-
+PHP?=/usr/bin/php
+PHP_VER?=7.4
+PHPBREW?=/Users/bubba/Development/phpbrew/bin/phpbrew
 brew:
 	brew install \
+		autoconf \
+		bzip2 \
+		composer \
+		neovim \
+		bison \
+		re2c \
 		mhash \
 		mcrypt \
 		curl \
@@ -25,7 +32,10 @@ brew:
 		libxml2
 
 php:
-	php /Users/Bubba/Development/phpbrew/bin/phpbrew install --name=$(PHP_VER) $(PHP_VER) +bcmath +bz2="/usr/local/opt/bzip2" \
+	$(PHP) $(PHPBREW) install \
+		--name=$(PHP_VER) $(PHP_VER) \
+		+bcmath \
+		+bz2="/usr/local/opt/bzip2" \
 		+calendar \
 		+cli \
 		+ctype \
@@ -50,7 +60,7 @@ php:
 		+sockets \
 		+tokenizer \
 		+xml \
-		+openssl="/usr/local/Cellar/openssl/1.0.2s"  \
+		+openssl="/usr/local/opt/openssl@1.1"  \
 		+zip \
 		+zlib="/usr/local/opt/zlib" \
 		+fpm \
@@ -58,12 +68,11 @@ php:
 		+mysql \
 		+pgsql="/usr/local/opt/postgresql" \
 		+pdo
-	php /Users/Bubba/Development/phpbrew/bin/phpbrew switch $(PHP_VER)-zts
-	php /Users/Bubba/Development/phpbrew/bin/phpbrew  ext install vips -- --with-readline=/usr/local/opt/readline
-	php /Users/Bubba/Development/phpbrew/bin/phpbrew ext install iconv -- --with-iconv=/usr/local/opt/libiconv
-	php /Users/Bubba/Development/phpbrew/bin/phpbrew ext install intl -- --with-icu-dir=/usr/local/opt/icu4c
-	php /Users/Bubba/Development/phpbrew/bin/phpbrew ext install parallel
-	php /Users/Bubba/Development/phpbrew/bin/phpbrew ext install yaml
+	 $(PHP) $(PHPBREW) switch $(PHP_VER)
+	 $(PHP) $(PHPBREW) ext install vips -- --with-readline=/usr/local/opt/readline
+	 $(PHP) $(PHPBREW) ext install iconv -- --with-iconv=/usr/local/opt/libiconv
+	 $(PHP) $(PHPBREW) ext install intl -- --with-icu-dir=/usr/local/opt/icu4c
+	 $(PHP) $(PHPBREW) ext install yaml
 
 ctags:
 	git clone git@github.com:universal-ctags/ctags.git ~/Development/ctags

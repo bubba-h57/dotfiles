@@ -44,6 +44,8 @@ alias cdu='composer dump-autoload'
 
 alias ap='ansible-playbook --private-key ansible.pem --vault-password-file .ansible-vault'
 
+eval `/usr/local/bin/gdircolors $ZSH_CUSTOM/dircolors-solarized/dircolors.256dark`
+
 colorize_via_pygmentize () {
 	if ! (( $+commands[pygmentize] ))
 	then
