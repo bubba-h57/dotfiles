@@ -82,3 +82,7 @@ alias ssh="ssh -Y"
 source $HOME/.phpbrew/bashrc
 /usr/bin/ssh-add
 clear
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+source /Users/bubba/.rvm/scripts/rvm
+export PATH="$PATH:$HOME/.rvm/bin"
