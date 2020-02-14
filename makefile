@@ -1,6 +1,14 @@
 PHP?=/usr/bin/php
 PHP_VER?=7.4
 PHPBREW?=/Users/bubba/Development/phpbrew/bin/phpbrew
+
+installers:
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	curl -L -O https://github.com/phpbrew/phpbrew/releases/latest/download/phpbrew.phar
+	chmod +x phpbrew.phar
+	# Move the file to some directory within your $PATH
+	sudo mv phpbrew.phar /Users/bubba/bin/phpbrew
+
 brew:
 	brew install \
 		autoconf \
@@ -31,6 +39,8 @@ brew:
 		libffi \
 		libedit \
 		libxml2
+	brew tap homebrew/cask-fonts
+	brew cask install font-sourcecodepro-nerd-font
 
 php:
 	$(PHP) $(PHPBREW) install \
@@ -76,9 +86,9 @@ php:
 	 $(PHP) $(PHPBREW) ext install yaml
 
 ctags:
-	git clone git@github.com:universal-ctags/ctags.git ~/Development/ctags
+	git clone git@github.com:universal-ctags/ctags.git /usr/local/src/ctags
 	export LIBXML_CFLAGS=-I/usr/local/opt/libxml2/include/libxml2
-	cd ~/Development/ctags
+	cd /usr/local/src/ctags
 	./autogen.sh
 	./configure
 	make
