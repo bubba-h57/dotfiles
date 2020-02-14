@@ -11,7 +11,7 @@ setopt noflowcontrol
 umask 0027
 
 mkdir -p $HOME/bin
-export PATH=/usr/local/src/flutter/bin;$HOME/bin:$HOME/.composer/vendor/bin:$PATH
+export PATH=/usr/local/Cellar/cocoapods/1.8.4/bin:/usr/local/src/flutter/bin:$HOME/bin:$HOME/.composer/vendor/bin:$PATH
 
 LAST_CONFIG_CACHE_FILE=$HOME/.last_git_update
 THIS_MONTH=$(echo `date` | awk '{print $2,$6}')
