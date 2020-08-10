@@ -1,36 +1,23 @@
-# This is Git's per-user configuration file.
 [user]
 	name = Bubba
 	email = rob@stechstudio.com
 [push]
-  default = upstream
+	default = upstream
 [color]
-  diff = auto
-  status = auto
-  branch = auto
-  interactive = auto
-  ui = true
-  pager = true
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
+	pager = true
 [color "status"]
-  added = yellow
-  changed = green bold
-  untracked = cyan bold
+	added = yellow
+	changed = green bold
+	untracked = cyan bold
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
 [core]
-	editor = /usr/local/bin/nvim
-  autocrlf = input
-[help]
-  autocorrect = 20
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-[gui]
-	recentrepo = /Users/bubba/develop/stechstudio/Viewer-Conversion
-[credential]
-	helper = osxkeychain
+	autocrlf = input

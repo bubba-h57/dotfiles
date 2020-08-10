@@ -1,9 +1,10 @@
-# turn off Ctrl + s XOFF (XON is Ctrl + q)
-stty ixany
-stty ixoff -ixon
-stty stop undef
-stty start undef
-setopt noflowcontrol
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 
 #umask 0027 = 750 for dirs & 640 for files.
 #umask 0077 = 700 for dirs & 600 for files
@@ -11,51 +12,17 @@ setopt noflowcontrol
 umask 0027
 
 mkdir -p $HOME/bin
-export PATH=/usr/local/Cellar/cocoapods/1.8.4/bin:/usr/local/src/flutter/bin:$HOME/bin:$HOME/.composer/vendor/bin:$PATH
+export PATH=$HOME/bin:$HOME/.composer/vendor/bin:$PATH
 
-LAST_CONFIG_CACHE_FILE=$HOME/.last_git_update
-THIS_MONTH=$(echo `date` | awk '{print $2,$6}')
-
-if [[ -e $LAST_CONFIG_CACHE_FILE ]]; then
-    LAST_MONTH=$(<$LAST_CONFIG_CACHE_FILE)
-    if [[ $THIS_MONTH != $LAST_MONTH ]]; then
-
-        # Pull any updates to my dotfile.
-        /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull --quiet
-
-        # Then update any submodules.
-        /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME submodule update --quiet --recursive
-
-        # Finally, install all my nvim plugins, or update them.
-        nvim --headless -es +PlugUpgrade +PlugInstall +PlugUpdate +qall!
-        echo $THIS_MONTH > $LAST_CONFIG_CACHE_FILE
-    fi
-else
-        # Pull any updates to my dotfile.
-        /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull --quiet
-
-        # Then update any submodules.
-        /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME submodule update --quiet --recursive
-
-        # Finally, install all my nvim plugins, or update them.
-        nvim --headless -es +PlugUpgrade +PlugInstall +PlugUpdate +qall!
-        echo $THIS_MONTH > $LAST_CONFIG_CACHE_FILE
-fi
 
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/.config/oh-my-zsh
 
-# Configure Powerlevel9k
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_OS_ICON_FOREGROUND='166'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon virtualenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# Configure Powerlevel
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -63,7 +30,7 @@ ZSH_DISABLE_COMPFIX="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(osx aws bubba-nerdfont bubba-brew bubba-exports bubba-aliases bubba-iterm-integration bubba-python command-not-found git git-flow-avh phing python systemd wd zsh-syntax-highlighting)
+plugins=(aws bubba-exports bubba-aliases bubba-python command-not-found git phing python systemd wd zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,9 +47,11 @@ export DISPLAY=:0
 alias ssh="ssh -Y"
 
 source $HOME/.phpbrew/bashrc
-/usr/bin/ssh-add
 clear
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-source /Users/bubba/.rvm/scripts/rvm
+source /usr/share/rvm/scripts/rvm
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

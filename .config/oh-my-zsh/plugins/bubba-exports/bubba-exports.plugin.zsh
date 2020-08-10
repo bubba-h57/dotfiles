@@ -4,8 +4,8 @@ if [[ -a /usr/local/Cellar/bash/5.0.2/bin/bash ]]; then
 fi
 
 export OSX=1
-export BIN_DIRCOLORS=`which gdircolors`
-export BIN_LS=$(which gls)
+export BIN_DIRCOLORS=`which dircolors`
+export BIN_LS="ls --color=tty"
 
 
 export HOSTNAME="`hostname -s`"

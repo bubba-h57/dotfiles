@@ -2,59 +2,56 @@ PHP?=/usr/bin/php
 PHP_VER?=7.4
 PHPBREW?=/Users/bubba/Development/phpbrew/bin/phpbrew
 
-installers:
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+phpbrew:
 	curl -L -O https://github.com/phpbrew/phpbrew/releases/latest/download/phpbrew.phar
 	chmod +x phpbrew.phar
-	# Move the file to some directory within your $PATH
-	sudo mv phpbrew.phar /Users/bubba/bin/phpbrew
+	sudo mv phpbrew.phar /usr/local/bin/phpbrew
 
-brew:
-	brew install \
+apt:
+	sudo apt update
+	sudo apt install -y build-essential software-properties-common
+	sudo apt install -y git curl wget zip unzip mysql-server \
+		php7.2 php7.2-common php7.2-cli php7.2-gd php7.2-mysql php7.2-curl php7.2-intl php7.2-mbstring php7.2-bcmath php7.2-imap php7.2-xml php7.2-zip
+	sudo apt install -y \
 		autoconf \
 		bzip2 \
 		composer \
 		neovim \
 		bison \
 		re2c \
-		mhash \
 		mcrypt \
 		curl \
-		zlib \
+		zlib1g \
 		gpg \
-		postgresql \
-		mysql \
-		libzip \
-		docker \
-		docker-compose \
-		docker-machine \
-		xhyve \
-		docker-machine-driver-xhyve \
-		libiconv \
-		icu4c \
-		node \
+		mysql-client \
+		libc6 \
+		icu-devtools \
+		nodejs \
 		jq \
 		mysql-client \
-		vips \
-		libffi \
-		libedit \
+		libvips42 \
+		libffi-dev \
+		libedit-dev \
+		libbz2-dev \
+		libcurl4 \
+		libcurl4-openssl-dev \
+		libonig-dev \
+		libzip-dev \
 		libxml2
-	brew tap homebrew/cask-fonts
-	brew cask install font-sourcecodepro-nerd-font
 
 php:
 	$(PHP) $(PHPBREW) install \
-		--name=$(PHP_VER) $(PHP_VER) \
+		--name=7.4 7.4 \
 		+bcmath \
-		+bz2="/usr/local/opt/bzip2" \
+		+bz2 \
 		+calendar \
 		+cli \
 		+ctype \
-		+curl="/usr/local/opt/curl" \
+		+curl \
 		+dom \
 		+fileinfo \
 		+filter \
-		+iconv="/usr/local/opt/libiconv" \
+		+iconv \
 		+ipc \
 		+json \
 		+mbregex \
@@ -67,22 +64,21 @@ php:
 		+pear \
 		+phar \
 		+posix \
-		+readline="/usr/local/opt/readline" \
+		+readline \
 		+sockets \
 		+tokenizer \
 		+xml \
-		+openssl="/usr/local/opt/openssl@1.1"  \
+		+openssl  \
 		+zip \
-		+zlib="/usr/local/opt/zlib" \
+		+zlib \
 		+fpm \
 		+sqlite \
 		+mysql \
-		+pgsql="/usr/local/opt/postgresql" \
 		+pdo
 	 $(PHP) $(PHPBREW) switch $(PHP_VER)
-	 $(PHP) $(PHPBREW) ext install vips -- --with-readline=/usr/local/opt/readline
-	 $(PHP) $(PHPBREW) ext install iconv -- --with-iconv=/usr/local/opt/libiconv
-	 $(PHP) $(PHPBREW) ext install intl -- --with-icu-dir=/usr/local/opt/icu4c
+	 $(PHP) $(PHPBREW) ext install vips
+	 $(PHP) $(PHPBREW) ext install iconv
+	 $(PHP) $(PHPBREW) ext install intl
 	 $(PHP) $(PHPBREW) ext install yaml
 
 ctags:
@@ -95,7 +91,13 @@ ctags:
 	make install
 
 ruby:
-	gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-	curl -sSL https://get.rvm.io | bash -s stable --ruby
+	sudo apt-add-repository -y ppa:rael-gc/rvm
+	sudo apt-get update
+	sudo apt-get install rvm
+	rvm install ruby
 
+pyenv:
+	curl https://pyenv.run | bash
 
+python-dev:
+	sudo apt-get install --no-install-recommends -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev

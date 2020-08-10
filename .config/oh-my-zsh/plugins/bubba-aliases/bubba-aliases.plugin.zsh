@@ -5,7 +5,7 @@ alias ....='cd ../../../'
 alias .....='cd ../../../../'
 
 # ls, the common ones I use a lot shortened for rapid fire usage
-alias ls="$BIN_LS --color" # use gnu ls, and color
+alias ls="$BIN_LS" # use gnu ls, and color
 alias l='ls -lFh'     #size,show type,human readable
 alias lb='ls -lAFh'   #long list,show almost all,show type,human readable
 alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
@@ -44,7 +44,7 @@ alias cdu='composer dump-autoload'
 
 alias ap='ansible-playbook --private-key ansible.pem --vault-password-file .ansible-vault'
 
-eval `/usr/local/bin/gdircolors $ZSH_CUSTOM/dircolors-solarized/dircolors.256dark`
+eval `$BIN_DIRCOLORS $ZSH_CUSTOM/dircolors-solarized/dircolors.256dark`
 
 colorize_via_pygmentize () {
 	if ! (( $+commands[pygmentize] ))
@@ -53,7 +53,7 @@ colorize_via_pygmentize () {
 	fi
 	if [ $# -eq 0 ]
 	then
-		pygmentize -O style=solarized_dark256 -g
+		pygmentize -O style=solarized-dark -g
 		return $?
 	fi
 	local FNAME lexer
@@ -62,9 +62,9 @@ colorize_via_pygmentize () {
 		lexer=$(pygmentize -N "$FNAME")
 		if [[ $lexer != text ]]
 		then
-			pygmentize -O style=solarized_dark256 -l "$lexer" "$FNAME"
+			pygmentize -O style=solarized-dark -l "$lexer" "$FNAME"
 		else
-			pygmentize -O style=solarized_dark256 -g "$FNAME"
+			pygmentize -O style=solarized-dark -g "$FNAME"
 		fi
 	done
 }
