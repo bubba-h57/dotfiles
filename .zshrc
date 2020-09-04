@@ -49,6 +49,9 @@ alias ssh="ssh -Y"
 source $HOME/.phpbrew/bashrc
 clear
 
+export BROWSER='~/bin/chrome'
+export PATH=".:./vendor/bin:$PYENV_ROOT/bin:$PATH"
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 source /usr/share/rvm/scripts/rvm
 export PATH="$PATH:$HOME/.rvm/bin"
